@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>早苗朋宏 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>早苗朋宏 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社ポピンズ</a>
+  <a href="#k2">2. 一般財団法人地域・教育魅力化プラットフォーム</a>
+  <a href="#k3">3. モノグサ株式会社</a>
+  <a href="#k4">4. ランディット株式会社</a>
+  <a href="#k5">5. アスエネ株式会社</a>
+  <a href="#k6">6. カイテク株式会社</a>
+  <a href="#k7">7. エムスリーキャリア株式会社</a>
+  <a href="#k8">8. GO株式会社（旧社名：株式会社Mobility Technologies）</a>
+  <a href="#k9">9. CPAエクセレントパートナーズ株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">各経営ポジション</span><span class="badge badge-blue">東証プライム</span></div>
+  <div class="co-name">株式会社ポピンズ</div>
+  <div class="co-url"><a href="https://www.poppins.co.jp" target="_blank">https://www.poppins.co.jp</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒150-0012　東京都渋谷区広尾5丁目6番6号</td></tr><tr><th>上場区分</th><td>東証プライム</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>保育業界を創り上げたリーディングカンパニーで働く機会</li><li>2020年12月に日本初SDGs-IPOとして東証一部に上場</li><li>第2創業期における大幅な組織改革を推進</li><li>経営陣として組織の方針決定に携わることができる</li><li>多様な事業ポートフォリオでシナジーを創出</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">約30年前、日本に保育業界やベビーシッター業界がない時代に創業し、保育業界を創り上げてきたリーディングカンパニーです。保育所の運営、ベビーシッターの派遣、保育従事者向けの教育研修など、育児に関わるワンストップのサービスを提供。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>約30年前、日本に保育業界やベビーシッター業界がない時代に創業し、保育業界を創り上げてきたリーディングカンパニーです。「最高水準のエデュケアと介護サービスで社会に貢献する」という理念のもと、業界最大手であるナニーサービス（ベビーシッター派遣）から全国の保育・教育施設運営、高齢者向けVIPケアサービス、教育研修事業等、幅広い事業の展開により、働く女性を力強く支援していきます。</p><p>保育所（認可、認証、事業所内）の運営（全国約300施設）、教育ベビーシッター（ナニー）の派遣、スマートシッターの運営や保育従事者向けの教育研修など、育児に関わるワンストップのサービスを提供しています。</p><p><strong>2020年12月には、日本初 SDGs -IPOとして東証一部に上場。</strong></p><p>2018年の創立30周年という節目に創業者である中村氏の娘の轟氏（現在44歳）が代表取締役社長に着任しました。2023年8月に報道された一件を契機に、大幅な組織改革を実施。経営体制の刷新、人材の入れ替え、意思決定プロセスの見直しを進め、第2創業期とも言える変革の時を迎えています。</p><p><strong>轟麻衣子社長</strong><br>1976年生まれ。オーナーのお嬢様。12歳で英国に留学、ロンドン大学卒。メリルリンチ、シャネル勤務、欧州経営大学院などを経て、祖父の介護をキッカケに日本へ帰国。2018年母親が創業したポピンズの社長に就任。2児の母。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 各経営ポジション</div>
+          <div class="job-preview">グループ各社の社長～役員として事業拡大を牽引する経営ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>■お迎えするポジション</strong><br>面談や選考の中で、ご意向や適性を踏まえた上で以下ポジションにてお迎えをさせて頂く予定です。</p><ul><li>株式会社エデュケア（保育所・学童事業等）</li><li>株式会社ポピンズシッター（ベビーシッター事業等）</li><li>株式会社ポピンズファミリーケア（介護事業等）</li></ul><p>※上記の各会社の社長～役員のポジションを想定。</p><p><strong>■業務内容</strong><br>各事業の持続的かつ飛躍的な成長実現に向けて、経営層として共に経営戦略の立案を行い、組織全体のマネジメント及び事業推進をお任せします。</p><ul><li>事業運営方針や事業理念に基づいた方針の策定、推進、実行</li><li>グループ間でのシナジーを創出する為の戦略立案</li><li>各種トラブル対応と改善施策</li><li>重要課題解決のための戦略・施策の検討</li><li>経営層や他部門とコミュニケーション連携</li><li>経営会議でのレポーティング</li></ul><p><strong>■応募要件</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>事業責任者、またはそれに準ずるポジションで事業を運営した経験（PL責任）</li><li>周囲より高い人望を得て強いリーダーシップを発揮した経験・実績（誠実さも重視）</li><li>良好な人間関係を築く人格と高いコミュニケーション能力、トラブル解決経験</li><li>スピード感ある経営をリードし、自らハンズオンでフットワーク軽く動き、エクセキュ―ション・改善経験</li><li>事業の成長と社会・顧客・社員等のステークホルダーの幸せを考え抜き実現したコミット経験</li><li>以下の中で部長クラスを監督できる知見・経験：デジタルマーケティング、新プロダクト・新サービス開発、システム開発、オペレーション改善、人事管理</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>事業会社での事業責任者経験またはそれに準ずるポジション</li><li>戦略/経営コンサルティングファーム経験</li><li>保育・教育・介護・その他の福祉関連の現場経験・管理経験</li></ul><p><strong>■求める人財像</strong></p><ul><li>熱意を持って仕事に取り組めて、ストレス耐性がとても高く、新たな事業や価値を作ることを楽しめるマインドを持った方</li><li>対人コミュニケーション力が高く、高い人望を得て、スタッフをモチベートし、組織を動かす素質・実績がある方</li><li>当社への事業共感を感じて頂ける方や、社会課題解決にコミットメントしたい方</li><li>論理的思考や分析能力が高い人</li><li>定性・定量の情報を分析し、課題や論点の整理ができる</li><li>未来志向でポジティブなコミュニケーションスタンスが取れる方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.poppins.co.jp" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">教育改革プロジェクト ディレクター</span><span class="badge badge-blue">一般財団法人</span></div>
+  <div class="co-name">一般財団法人地域・教育魅力化プラットフォーム</div>
+  <div class="co-url"><a href="https://c-platform.or.jp/" target="_blank">https://c-platform.or.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒690-0842 島根県松江市東本町二丁目25-6 みらいBASE2階</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>統廃合の危機に瀕していた島根県海士町の隠岐島前高校を全国から生徒が集まる人気校へと再生させた奇跡のストーリーから始まった組織</li><li>35道府県173校以上の公立高校が参画する「地域みらい留学」プラットフォームを構築</li><li>日本財団ソーシャルイノベーター最優秀賞受賞</li><li>内閣府、経産省、文科省など中央省庁からの事業受託も多数</li><li>教育による地方創生という新たな社会システムを構築中</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">統廃合の危機に瀕していた島根県海士町の隠岐島前高校を、全国から生徒が集まる人気校へと再生させた奇跡のストーリーから始まったこの団体。2017年の法人化以降、その成功モデルを全国に展開し、今や35道府県173校以上の公立高校が参画する「地域みらい留学」プラットフォームを構築。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>統廃合の危機に瀕していた島根県海士町の隠岐島前高校を、全国から生徒が集まる人気校へと再生させた奇跡のストーリーから始まったこの団体。2017年の法人化以降、その成功モデルを全国に展開し、今や35道府県173校以上の公立高校が参画する「地域みらい留学」プラットフォームを構築している。<strong>日本財団ソーシャルイノベーター最優秀賞受賞</strong>という華々しい実績を持ち、内閣府、経産省、文科省など中央省庁からの事業受託も多数獲得している。最近では日本ベンチャー・フィランソロピー基金からの資金提供・パーソルホールディングスとのビジョンパートナー契約など、民間企業との戦略的連携も加速している。</p><p>「意志ある若者にあふれる持続可能な地域・社会をつくる」というミッションのもと、教育による地方創生という新たな社会システムを構築中だ。地域の高校が単なる進学予備校ではなく、地域課題解決の実践的学びの場となり、都市部の生徒が地方で越境体験を積む。これは日本の教育と地域活性化の両方を同時に解決する革新的アプローチである。</p><p><strong>代表理事：岩本悠氏</strong><br>東京都出身、学生時代にアジア・アフリカ20か国の地域開発に関わり、印税でアフガニスタンに学校建設。ソニー勤務後、2007年から島根県の隠岐島前高校魅力化プロジェクトを推進し、2017年に本財団を設立。日本財団「特別ソーシャルイノベーター最優秀賞」や「日本クリエイション大賞」など多数受賞。</p><p>NPOカタリバ代表理事・今村久美氏、リクルートキャリア初代社長・水谷智之氏といった教育・人材業界のトップランナーが理事として参画し、島根から日本全体の教育システム変革を仕掛けている。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 教育改革プロジェクト ディレクター</div>
+          <div class="job-preview">都道府県・自治体・教育委員会と連携し、高校教育改革プロジェクトの戦略設計〜実行までを統括</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>一部のNPO・地域実践でやっていた教育改革を、国レベルへ拡張していっています。地域経営インフラ&quot;として再設計することが出来るポジションです</strong></p><p>都道府県‧⾃治体‧教育委員会と連携し、⾼校教育改⾰プロジェクトの戦略設計〜実⾏までを統括するポジションです。単なる学校伴⾛ではなく、地域全体の教育構想を描き、⾏政‧学校‧地域産業‧⺠間企業など多様なステークホルダーを巻き込みながら、教育改⾰を推進していただきます。</p><p>また、本ポジションはプレイヤー業務に留まらず、20名前後の営業‧プロジェクト推進‧伴⾛チームを横断的にマネジメントし、案件獲得‧品質管理‧組織づくりまで担う事業責任者候補の位置づけです。</p><p><strong>■業務内容</strong></p><p><strong>1. 教育改革プロジェクトの戦略設計</strong></p><ul><li>都道府県単位での教育改革構想の設計</li><li>KPI設計／ロードマップ策定</li><li>高校魅力化・探究学習等の施策立案</li><li>教育DX推進</li><li>成果検証／改善提案</li></ul><p><strong>2. 都道府県教育委員会との折衝</strong></p><ul><li>都道府県教育委員会との協議・提案</li><li>教育行政との合意形成</li><li>行政向け提案資料作成</li><li>次年度提案／案件継続提案</li></ul><p><strong>3. 調査・分析</strong></p><ul><li>高校・自治体ヒアリング</li><li>地域課題分析（人口動態・産業構造等）</li><li>アンケート設計／分析</li><li>定量・定性データ分析</li><li>有識者ヒアリング</li></ul><p><strong>4. 組織・チームマネジメント</strong></p><ul><li>営業・デリバリーチーム（20名前後）のマネジメント</li><li>業務委託メンバーを含む体制構築</li><li>プロジェクト品質管理</li><li>KPIマネジメント</li><li>メンバー育成・評価</li><li>ナレッジマネジメント</li></ul><p><strong>■このポジションの特徴</strong></p><ul><li>「学校単体」ではなく、都道府県単位のビジョン設計を行う仕事</li><li>戦略設計と現場伴走の両方に関われる</li><li>行政・教育・地域産業を横断する仕事</li><li>正解のない社会課題を構造から解く仕事</li><li>自治体との信頼関係が次の案件獲得につながる</li><li>地域創生と教育改革を同時に推進できる</li></ul><p><strong>■応募要件</strong></p><p><span class='tag tag-must'>MUST</span></p><p>以下いずれかの経験をお持ちの方</p><ul><li>公共系コンサルティング経験</li><li>教育行政／自治体関連業務経験</li><li>教育事業の企画・推進経験</li><li>シンクタンク／リサーチ業務経験</li><li>教育スタートアップ等での事業推進経験</li></ul><p>加えて、</p><ul><li>10名以上の組織マネジメント経験</li><li>複数プロジェクトの統括経験</li><li>行政・自治体との折衝経験</li></ul><p><strong>スキル</strong></p><ul><li>課題設定・構造化能力</li><li>仮説思考</li><li>プロジェクトマネジメント</li><li>ステークホルダー調整</li><li>ファシリテーション</li><li>提案資料作成能力</li><li>定量／定性分析能力</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>文部科学省／教育委員会経験</li><li>公共領域コンサルティングファーム経験</li><li>地方創生関連事業経験</li><li>教育DX推進経験</li><li>PMO構築経験</li><li>業務委託組織マネジメント経験</li><li>教育政策関連業務経験</li></ul><p><strong>■求める人物像</strong></p><ul><li>複雑な課題を構造的に整理できる方</li><li>抽象度の高い議論を具体施策に落とし込める方</li><li>戦略だけでなく現場にも入り込める方</li><li>行政・教育現場から信頼を得られる方</li><li>プレイヤーではなく「組織で成果を出す」視点を持つ方</li><li>品質基準を引き上げられる方</li><li>カオスな状況でも前進できる方</li><li>教育・地域・社会課題への関心が高い方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 島根県</span><span class="pill">🏠 フルリモート可</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://c-platform.or.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">for Business事業責任者 (VPoB候補)</span><span class="badge badge-blue">N-1</span></div>
+  <div class="co-name">モノグサ株式会社</div>
+  <div class="co-url"><a href="https://corp.monoxer.com/company/" target="_blank">https://corp.monoxer.com/company/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒102-0072 東京都千代田区飯田橋3-8-5 住友不動産飯田橋駅前ビル 7階</td></tr><tr><th>設立</th><td>2016年8月</td></tr><tr><th>上場区分</th><td>未上場（N-1期）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備フェーズ：N-1期</li><li>カジュアル面談スタート可</li><li>過去入社実績アリ</li><li>Google、リクルート、ヤフー、楽天、日本IBM、メルカリなど、様々な企業で活躍してきたメンバーが多く集まっています</li><li>各々の強みが活かされ、メンバー同士で学んだり、刺激を受けることも多い環境</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2016年8月に設立された、『人の記憶』に向き合っているスタートアップ企業です。記憶への意識や環境を改善し、人類の進歩を後押ししたいという想いから、AIを活用した記憶のプラットフォーム『Monoxer（モノグサ）』を開発・運営。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2016年8月に設立された、『人の記憶』に向き合っているスタートアップ企業です。記憶への意識や環境を改善し、人類の進歩を後押ししたいという想いから、AIを活用した記憶のプラットフォーム『Monoxer（モノグサ）』を開発・運営しています。</p><p>個人経営の塾から上場されている大手塾、学校(公立・私立)、語学教室まで幅広い法人などに導入されており、最近ではフィリピンやミャンマーといった海外での導入や、事業会社における従業員教育で活用される事例も増えています。</p><p>リクルート出身のCEO竹内孝太朗氏と、高校の同級生でグーグルのエンジニアとして働いていたCTO畔柳圭佑氏が2016年に設立。『Monoxer』を導入した教室は、2019年末には70に過ぎなかったが、2020年末には2700、2022年4月には4000を数え、急成長を遂げています。</p><p><strong>2021年12月にはシリーズ B ラウンドで18.1億円を調達され、累積調達額は約23.5億円です。</strong></p><p>今後は一般企業や介護施設など幅広い業界へのアプローチだけでなく、2022年度からの海外展開を見据えたリサーチも進めており、全世界で400兆円以上のマーケット規模を見込んでいます。</p><p><strong>代表取締役 CEO　竹内 孝太朗氏</strong><br>名古屋大学経済学部卒。2010年に株式会社リクルートに入社。中古車領域での広告営業に従事し、2011年に中古車領域初及び最年少で営業部門の全社表彰を受賞。2013年からは「スタディサプリ」にて高校向け営業組織の立ち上げ、学習到達度測定テストの開発、オンラインコーチングサービスの開発を行う。高校の同級生である畔柳とMonoxerを共同創業。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 for Business事業責任者 (VPoB候補)</div>
+          <div class="job-preview">企業市場におけるMonoxerの事業全体を統括し、新市場創造を推進する事業責任者</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>「記憶を日常に。」というミッションを掲げ、記憶の課題を解決する会社として、&quot;人の記憶&quot;のプラットフォーム「Monoxer」を開発・運営しています。</strong></p><p>「記憶」は全人類の共通課題であり、その市場規模は400兆円超。独自技術により、人間の知的活動の根幹である「記憶」を定量的に計測・可視化させ、そのデータをもとに最も効率的な学習の自動化を可能にしました。</p><p><strong>■採用背景</strong><br>現在、私たちが最も大きなポテンシャルを感じているのが「企業領域（Talent Capability Development）」です。あらゆるビジネスシーンにおいて、知識の習得（記憶）はパフォーマンスの土台です。しかし、多くの企業教育は「教える」ことに終始・留まっており、その後の「定着」は従業員（学習者）個人の裁量に委ねられてきました。</p><p>昨年末にシリーズCラウンド（総額約18.5億円）を実施し、住友商事様と資本業務提携、ならびにANAホールディングス様や、三井化学様、東急建設様といった日本を代表する企業のCVCからも出資いただきました。</p><p><strong>■業務内容</strong></p><p><strong>事業戦略の策定と実行推進</strong><br>企業における人材育成・セールスイネーブルメント領域の動向、競合環境、Monoxerの強みを深く理解し、事業目標達成に向けた短期/中長期両面の事業戦略を策定します。事業全体のP/L責任を持ち、目標達成に向けたあらゆる施策を推進します。</p><p><strong>組織の統括とマネジメント</strong><br>For Business領域のセールス、アカウントエグゼクティブ、場合によってはマーケティングを含む関連チームを統括し、高いパフォーマンスを発揮できる組織体制を構築・維持します。</p><p><strong>主要アカウント・アライアンス戦略の推進</strong><br>各業界のリーディングカンパニーといえる大手の企業様との関係性を深化させ、戦略的なアライアンス構築や大型案件のクロージングを主導します。</p><p><strong>事業運営の最適化と仕組み化</strong><br>売上、利益、顧客満足度を最大化するための事業運営プロセス全体の最適化を推進します。セールスプロセスの改善、顧客サポート体制の強化、データに基づいた意思決定プロセスの構築など、再現性のある事業成長モデルを確立します。</p><p><strong>経営層への提言と事業全体へのコミットメント</strong><br>担当領域の事業責任者として、経営との会議体を通して進捗報告、戦略提言、および経営判断への参画を行います。</p><p><strong>プロダクト開発への戦略的貢献</strong><br>顧客や市場のニーズを深く掘り下げ、プロダクト開発チームへ戦略的なフィードバックを行います。</p><p><strong>■応募要件</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>事業部長またはそれに準ずるレイヤーでの事業マネジメント経験（3年以上目安）- 事業戦略の立案から実行、P/L責任を持ち、事業成長を牽引した実績がある方</li><li>大規模組織（目安として20名以上）のマネジメント経験- 組織目標達成への強いコミットメントと、メンバーの育成、エンゲージメント向上に貢献した実績をお持ちの方</li><li>大手企業に対するソリューション営業のご経験（5年以上目安）- 高い事業目標に対する達成実績と、そのための戦略的なアプローチを自ら構築し実行したご経験</li><li>事業・経営それ自体への強いコミットメント- 自組織の目標達成だけでなく、会社全体の事業成長を最大化するために、俯瞰的な視点から意思決定ができる方</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>CxOや企業経営に準ずる経験</li><li>SaaSビジネスにおける事業責任者またはそれに準ずる経験</li><li>BtoBビジネスにおける深い知見やネットワーク</li><li>プロダクト開発チーム、マーケティングチーム、カスタマーサクセスチームと連携し、顧客の声をプロダクトや施策に戦略的に反映させたご経験</li></ul><p><strong>■求める人物像</strong></p><ul><li>Monoxerの「記憶を日常に。」というミッションに共感し、記憶事業を通じて社会に大きなインパクトを与えたいという強い想いをお持ちの方</li><li>学びの最適化に情熱を持ち、困難な状況においても粘り強く、主体的に解決策を探求し、リードできる方</li><li>素直で学習意欲が極めて高く、過去の経験に囚われずにアンラーニングを厭わず、常に最善を追求できる方</li><li>自身の役割や責任範囲を制限せず、事業や経営にとって必要だと判断したことを率直に提言し、実行できる強いオーナーシップを持つ方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.monoxer.com/company/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k4"><div class="card-inner">
+  <div class="badges"><span class="badge">新規事業開発責任者候補</span><span class="badge badge-blue">N-3</span></div>
+  <div class="co-name">ランディット株式会社</div>
+  <div class="co-url"><a href="https://landit.co.jp/" target="_blank">https://landit.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒163-0440　東京都新宿区西新宿二丁目1番1号　新宿三井ビルディング40階</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備フェーズ：N-3期</li><li>社長リレーション</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">モビリティ×不動産×AIを掛け合わせ、駐停車の自動化からモビリティインフラ構築を目指す注目のスタートアップです。「世の中に最適と豊かさを提供し、人々の営みに欠かせない存在に」をミッションに、アナログからデジタルへ、ハードからソフトまで、あらゆる角度から駐車場という&quot;余白&quot;の価値最大化に挑んでいます。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>モビリティ×不動産×AIを掛け合わせ、駐停車の自動化からモビリティインフラ構築を目指す注目のスタートアップです。「世の中に最適と豊かさを提供し、人々の営みに欠かせない存在に」をミッションに、アナログからデジタルへ、ハードからソフトまで、あらゆる角度から駐車場という&quot;余白&quot;の価値最大化に挑んでいます。</p><p>日本の自動車保有台数に対し、把握されている駐車場がごく一部である現状に着目。AIと人の手、AIカメラと管理ソフトウェアを組み合わせ、Googleやゼンリンをも上回る車室単位の圧倒的なデータベースを構築・更新しています。</p><p>建設現場や通勤用駐車場手配サービス「at PORT」をはじめ、駐車場管理を効率化するSaaS「SYNC PORT（シンクポート）」、個人向けの予約式短期駐車場サービス「PIT PORT（ピットポート）」、さらに、AIカメラによる現場管理システム「AIMO（アイモ）」、月極駐車場のオンラインマーケット「PARK STOCK（パークストック）」、コインパーキング、商業施設駐車場などのETC化アプリ「PARK FLOW（パークフロー）」などを展開しています。</p><p>これらの多様なプロダクトを通じて、単独企業では困難なあらゆる駐車スペースのシームレスな運用を実現しています。2024年度には黒字化を達成し、今期は約50億円弱の売上見込み。2028〜2029年のIPOを目指すなど、今まさに成長加速フェーズにある企業です。</p><p><strong>代表取締役社長 CEO　藤林 謙太氏</strong><br>2010年三菱商事株式会社に入社し、建設機械・産業機械・自動車の事業領域を担当。株式会社産業革新機構にてクロスボーダーのM&Aを担当し、英国、日本の投資先（再生エネルギー関連） の取締役に就任。日本トイザらス株式会社では、Directorof Strategy ／戦略プロジェクト推進部長として、全社における機能横断的な戦略の立案・実行を担当。その後、IT企業等を経て、2021年にランディット株式会社を創業。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【ビジネス】新規事業開発責任者候補（Live Biz）</div>
+          <div class="job-preview">新規事業の「企画立案」から「実行」、そして「事業の柱の確立」までを一気通貫で担当</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>仕事概要</strong></p><p>ランディット株式会社は、「世の中に最適と豊かさを提供し、人々の営みに欠かせない存在に」というミッションのもと、市場規模3兆円超とされる駐停車領域のDX化を推進するスタートアップです。</p><p>現在、パーキングAIエージェント「at PORT」、短期駐車場運営・予約・決済アプリ「PIT PORT」など、7つ以上のプロダクトを展開し急成長を遂げています。しかし、この成長をさらに加速させ、次の事業の柱を創り出すことが不可欠です。</p><p>そこで今回、あなたの「営業力」「事業開発力」を存分に発揮し、新しいプロダクトやサービスをゼロから立ち上げ、市場を確立させることにコミットできる、強い意志を持った方を募集します。</p><p><strong>職務内容：</strong><br>新規事業の立ち上げメンバーとして、事業開発と0→1の営業拡大を一気通貫で担当していただきます。</p><p><strong>このポジションでお任せしたいこと</strong><br>新規事業の「企画立案」から「実行」、そして「事業の柱の確立」までを一気通貫でお任せします。営業戦略の策定、ターゲット選定、アプローチ手法、さらには商品・サービス開発に至るまで、全てに裁量を持って関わり、事業を安定的な成長軌道へと導く、まさに推進役としての活躍を期待しています。</p><p><strong>具体的な業務内容</strong></p><ul><li>営業戦略の策定と実行</li><li>市場調査 / 開拓</li><li>ターゲット顧客設定、キーアカウントへの戦略的アプローチ</li><li>第一人者として自らによる商談・クロージング（事業の成功モデルの確立）</li></ul><p><strong>応募資格</strong></p><p><strong><span class='tag tag-must'>MUST</span></strong></p><ul><li>法人営業経験2年以上</li><li>営業が好きで、営業に自信がある方</li><li>0→1での事業立ち上げ、もしくは新規プロダクト・新規サービスの立ち上げに強い意欲がある方</li><li>「既存のルールや成功パターンがない状況を楽しめる」マインドセットをお持ちの方</li></ul><p><strong><span class='tag tag-want'>WANT</span></strong></p><ul><li>新規事業、事業企画の経験</li><li>漠然とした問題を具体的な実行課題として明確化し、実行してきた経験</li></ul><p><strong>求める人物像</strong></p><ul><li>ランディットのビジョンに共感できる人</li><li>柔軟性を持って臨機応変な対応ができる人</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://landit.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k5"><div class="card-inner">
+  <div class="badges"><span class="badge">オープンポジション</span><span class="badge badge-blue">N-1</span></div>
+  <div class="co-name">アスエネ株式会社</div>
+  <div class="co-url"><a href="https://corp.asuene.com/company" target="_blank">https://corp.asuene.com/company</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒105-0001 東京都港区虎ノ門一丁目3-1 東京虎ノ門グローバルスクエア 6階</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備中</li><li>圧倒的な成長資金と財務基盤：累計資金調達額は115億円に上り、米国展開を加速させています。スタートアップながらメガバンク（SMBC）のプロダクトを事業承継するなど、異例かつ規模の大きなM&Aも成功させています。</li><li>グローバルな事業展開：現在、日本を含めて6カ国（東京、シンガポール、ロサンゼルス、ロンドン、バンコク、セブ）に現地拠点を持ち、事業を拡大しています。</li><li>市場No.1の実績と優位性：主力サービス「ASUENE」は3年連続導入社数No.1、「ASUENE SUPPLY CHAIN（旧ASUENE ESG）」も2年連続No.1を獲得しており、業界内での地位を確立しています。</li><li>ハイクラス人材が集う組織 正社員280名、業務委託を含め400名超の組織体制です。現在、事業部やコーポレート部門、CEO直下の新規事業などでマネージャー以上のハイクラス人材を積極採用しており、優秀なメンバーと切磋琢磨できる環境です。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「次世代によりよい世界を」をミッションに2019年に創業した、気候変動問題解決に取り組むクライメートテック企業です。CO2排出量見える化・削減・報告クラウドサービス「ASUENE」、サプライチェーンマネジメントクラウドサービス「ASUENE SUPPLY CHAIN」、GX・ESG人材特化型転職プラットフォーム「ASUENE CAREER」、非財務データの第三者保証事業「ASUENE VERITAS」、カーボンクレジット取引所「Carbon EX」など脱炭素・ESG領域のマルチプロダクトを提供し、企業のサステナビリティ経営をワンストップで支援しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「次世代によりよい世界を」をミッションに2019年に創業した、気候変動問題解決に取り組むクライメートテック企業です。</p><p>CO2排出量見える化・削減・報告クラウドサービス「ASUENE」、サプライチェーンマネジメントクラウドサービス「ASUENE SUPPLY CHAIN」、GX・ESG人材特化型転職プラットフォーム「ASUENE CAREER」、非財務データの第三者保証事業「ASUENE VERITAS」、カーボンクレジット取引所「Carbon EX」など脱炭素・ESG領域のマルチプロダクトを提供し、企業のサステナビリティ経営をワンストップで支援しています。</p><p>実績は圧倒的で、「ASUENE」は導入社数3年連続No.1、ESG評価クラウドも2年連続No.1を獲得しており、累計資金調達額は115億円に達しています。また、三井住友銀行の事業を買収・統合するなどこれまでに6社のM&Aを実施し、成長戦略の中核としています。現在は日本・米国・シンガポール・ロンドンなど世界6ヶ国に拠点を持ち、グローバル展開を加速させています。</p><p>米誌の「2025 World's Top GreenTech Companies」に、日本のCO2排出量見える化クラウド企業で唯一選出されるなど、世界的な評価も高い成長企業です。</p><p><strong>Founder 代表取締役CEO　西和田 浩平 氏</strong><br>慶應義塾大学卒業、三井物産にて日本・欧州・中南米の再生可能エネルギーの新規事業投資・M&Aを担当。ブラジル海外赴任中に分散型電源企業に出向、海外のM&A・PMI・事業投資・新規事業などを経験。Forbes Japan Rising Star Award受賞、Forbes Japan 100選出など多数のアワードを受賞。2025年12月に初の著書「『世界で勝てるGX』脱炭素資本主義が動かす、再エネ×AI主導の21世紀の産業革命」を出版</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 オープンポジション</div>
+          <div class="job-preview">ご経験や適性に応じて、ご経験を活かしていただけそうなポジションを提案</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>ご経験や適性に応じて、ご経験を活かしていただけそうなポジションを提案させていただきます。</p><p>IPOできる体制は整えていますが、大型IPOを狙い市況を見ながら上場タイミングを見計らっています。規制・ルールメイクが厳しい欧州・米国に進出しいち早く反映していることも、優位性の一つです。時価総額一兆円に向かって事業急拡大中の同社、一度お話を聞いてみませんか？</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span><span class="pill">✅ 副業可（条件あり）</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.asuene.com/company" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k6"><div class="card-inner">
+  <div class="badges"><span class="badge">プロダクトマネージャー</span><span class="badge badge-blue">N-1</span></div>
+  <div class="co-name">カイテク株式会社</div>
+  <div class="co-url"><a href="https://corp.caitech.co.jp/" target="_blank">https://corp.caitech.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒160-0022 東京都新宿区新宿1丁目23番1号 THE PORTAL 新宿御苑 2F</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備フェーズ：N-1期</li><li>社長リレーション</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「2050年に世界一幸せな超高齢社会をつくる」というビジョンのもと、介護・医療領域の人材不足解消に挑む2018年設立のHRテック企業で、介護・医療・看護領域に特化した単発・スポットワークマッチングサービス「カイテク」を展開しています。慢性的な人材不足という社会構造課題に対し、有資格者限定という独自モデルでアプローチしている点や勤務後5分以内の即時ペイメントや、足りないシフト枠をスポットワークと連携する仕組みなど、現場起点のプロダクト開発を進め、導入事業所は約2.1万、アプリDLは約118万人まで拡大。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「2050年に世界一幸せな超高齢社会をつくる」というビジョンのもと、介護・医療領域の人材不足解消に挑む2018年設立のHRテック企業で、介護・医療・看護領域に特化した単発・スポットワークマッチングサービス「カイテク」を展開しています。</p><p>慢性的な人材不足という社会構造課題に対し、有資格者限定という独自モデルでアプローチしている点や勤務後5分以内の即時ペイメントや、足りないシフト枠をスポットワークと連携する仕組みなど、現場起点のプロダクト開発を進め、導入事業所は約2.1万、アプリDLは約118万人まで拡大。</p><p>業界内では圧倒的なシェアNo.1（タイミー社の約4倍）のインフラとして独走状態をキープ、そして直近3期連続黒字、営業利益率10％超と、成長性と収益性を両立している点も特徴でIPOを目指しています。</p><p>今後は介護・医療周辺領域への展開や新規事業、M&Aも視野に入れ、日本で成功モデルを築いた先の海外展開も見据えています。エリア展開も進行中で、介護人材市場の流動化を促進するインフラとしてのポジションを築きつつあります。</p><p>デロイトトーマツグループが2026年1月に発表したテクノロジー・メディア・通信業界における成長率のランキング「Technology Fast 50 2025 Japan」において、過去3決算期の収益（売上高）に基づく成長率1,616％を記録し、見事１位を受賞！</p><p><strong>代表取締役社長　武藤 高史氏</strong><br>1988年生まれ。立命館大学大学院情報理工学研究科を修了後、新卒で富士ゼロックス株式会社に入社後、エムスリー株式会社に参画。祖父母の介護をきっかけに、日本が直面する介護・医療人材不足という社会課題の解決を志し、2018年に同社を創業。外部では講演や書籍寄稿なども行い、介護・医療分野の新しい働き方を提案する起業家としても注目されています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 プロダクトマネージャー（プロダクトオーナー候補）</div>
+          <div class="job-preview">介護・看護のスポットワークリング『カイテク』のプロダクトオーナー候補として、プロダクトの成長を牽引</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>募集背景</strong></p><ul><li>日本初の介護看護スポットワーク「カイテク」はサービス提供開始から約5年で大手企業様を含め、6,000以上の事業所に登録いただくまでに成長して参りました。ですが、全国の介護事業者数は30万人を超えるとも言われており、広大なマーケットの1%にもリーチ出来ていない状態です。</li><li>弊社のVISIONは「超高齢社会を成功に導く」という前人未到の難題に挑む事を掲げており、今後事業と組織を拡大し、再現性ある成長にトライしていくことを志向しています。</li><li>またサービス成長に伴い、プロダクト&オペレーション(カイテクはOpsが密接に関わる)で、大量に課題が出てくる中で、インパクトのある課題解決をしていきたいと考えています</li><li>今後新規サービス・プロダクトも今後生み出していく中で、プロダクトを中心にして、ビジネスモデル開発(売上/利益)&顧客開発の責任者を担うことを期待しています</li></ul><p><strong>業務内容</strong><br>介護・看護のスポットワークリング『カイテク』のプロダクトオーナー候補として以下業務を担当いただきます</p><ul><li>プロダクトビジョン、ロードマップの設計</li><li>市場・競合調査、顧客インタビューなどを通じたプロダクト企画</li><li>開発チームとの連携およびプロジェクトマネジメント</li><li>グロースハック業務（定量定性分析、施策設計、高速PDCA）</li><li>（将来的に）プロダクトマネジメントチームの組成、マネジメント</li></ul><p><strong>ポジションの魅力</strong></p><ul><li>社会貢献性が高い：社会課題ど真ん中の課題をProductで解決していく</li><li>成長フェーズ：Productの成長フェーズでProduct構築に関わっていける</li><li>両面：to B(介護施設/医療機関)、to C(介護職/看護師)の両方が見れるProduct</li><li>SaaS & Platform：単純なマッチングPlatformではなく、多くのオペレーションを自動化しているなどSaaS要素もあり</li><li>リリーススピード：週に数回のリリースをするなど、顧客・市場にデリバリーできるスピードが早い(顧客反応がすぐに見られる)</li><li>マーケティング業務も含めて裁量もって意思決定できるポジションである</li><li>会社規模も大きくなく、これから成長していく会社であるため、経営に近い立場で関われる</li></ul><p><strong><span class='tag tag-must'>MUST</span></strong></p><ul><li>自社プロダクトのプロダクトマネジメント経験</li><li>プロダクトの課題を数値化できるデータ分析力</li><li>分析（定量・定性）、企画、A/Bテストなど一連のグロースハック実務の経験がある</li><li>ビジネス、エンジニア、デザイナーとの開発推進経験</li></ul><p><strong><span class='tag tag-want'>WANT</span></strong></p><ul><li>複数施策の組み合わせKPI/KGIを大きく改善した経験</li><li>A/Bテストやその他の効果測定手法に関する知識・経験がある</li><li>社内DXに関する知識や実践経験(業務プロセスの効率化や自動化の推進)</li><li>プログラミングやシステム設計の基礎知識(エンジニアリングチームと円滑に連携できる)</li><li>介護医療業界トレンドや競合分析に精通</li></ul><p><strong>求める人物像</strong></p><ul><li>プロダクト企画においてROI観点での意思決定・思考ができる</li><li>ユーザー中心な思考(ユーザーインサイトを理解し、プロダクト改善に取り組む姿勢)</li><li>ユーザー／開発／ビジネスをバランス良く理解した状況判断力</li><li>ビジネス&エンジニアチームを巻き込み合意&調整ができる</li><li>自律駆動で主体性があること(プロジェクトを自走できる能力）</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可（条件あり）</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.caitech.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k7"><div class="card-inner">
+  <div class="badges"><span class="badge">PdMオープンポジション</span><span class="badge badge-blue">当面予定なし</span></div>
+  <div class="co-name">エムスリーキャリア株式会社</div>
+  <div class="co-url"><a href="https://www.m3career.com/corporate-info/#about-4" target="_blank">https://www.m3career.com/corporate-info/#about-4</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒105-0001　東京都港区虎ノ門4-1-28　虎ノ門タワーズオフィス</td></tr><tr><th>従業員数</th><td>1,101名（2025年10月末時点）</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>豊富なアセットを活用できる事業開発環境！：エムスリー株式会社（51％）と株式会社エス・エム・エス（49％）による安定したジョイントベンチャーですが、親会社からの過度な干渉はなく自由度の高い環境で任せてもらえます。豊富なアセットを活用して、「材料がいっぱいある中で絵を描く」ことが得意な方にぴったりなフェーズです。</li><li>リアルビジネスへの強み：親会社のエムスリーと比較して、「営業を伴うビジネス」や「人を伴うビジネス」といったリアルビジネスに強みを持っています。プロダクト作りだけでなく、営業組織を牽引できる方は特に活躍できるフィールドです。</li><li>社員の9割以上が異業界出身！若手が躍動する組織！：医療業界や人材業界が未経験の方でも大歓迎です！社員の90%近くが20代・30代で構成されており、「誰が言ったか」ではなく「何を言ったか」を重視するフラットでスピード感のある組織です。ロジカルでありながらも、ノリが良く活気にあふれた風土があります。</li><li>柔軟な働き方を後押し！：週1～3日の在宅勤務（遠隔地でのフルリモート事例あり）や時差出勤、短時間勤務に対応しています。さらに個人の事情やスキルアップ目的での副業も可能です。「健康経営優良法人2026（ホワイト500）」にも2年連続で認定されており、働きやすさも抜群です。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2009年の設立以来、「イキイキと働く医療従事者を一人でも増やし、医療に貢献する」というミッションを掲げているエムスリーキャリア。日本の医療インフラが直面する「人材不足・偏在」「過重労働」「医療機関の経営難」といった深刻な課題に対し、100年先の未来を見据えて事業を展開しています。当社の圧倒的な優位性は、日本の医師の約9割にあたる34万人以上の医師が登録する会員データベースを有している点です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2009年の設立以来、「イキイキと働く医療従事者を一人でも増やし、医療に貢献する」というミッションを掲げているエムスリーキャリア。日本の医療インフラが直面する「人材不足・偏在」「過重労働」「医療機関の経営難」といった深刻な課題に対し、100年先の未来を見据えて事業を展開しています。</p><p>当社の圧倒的な優位性は、日本の医師の約9割にあたる34万人以上の医師が登録する会員データベースを有している点です。この強固なアセットを武器に、医療人材マッチングを核としながら、医療機関の採用・経営コンサルティング、一般企業向けの健康経営支援、さらには医師の働き方改革支援と多彩なソリューションを提供しています。</p><p>実績として、産業医紹介サービスにおいては医師登録実績8年連続No.1を獲得し、訪日外国人向けオンライン診療サービスでは世界43か国の利用実績を突破しています。従業員数も1,101名（2025年10月末時点）へと拡大し、医療人材のリーディングカンパニーとして確かな成長とイノベーションを続けています！</p><p><strong>代表取締役 沼倉 敏樹</strong><br>北海道大樹町生まれ。帯広柏葉高校、中京大学体育学部を卒業後、公立高校の教員、アパレル商社のブランドマネージャーを経て、青山学院大学大学院国際マネジメント研究科（MBA）に入学。大学院修了後にエムスリーキャリアへ入社。現場のコンサルタント、医師キャリア事業部長を経て2021年4月から代表取締役。趣味はスキー。年間滑走日数は30日以上。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 PdMオープンポジション［複数プロダクトあり］</div>
+          <div class="job-preview">「0→1」「1→10」「10→100」のすべての事業フェーズのプロダクトマネジメントにチャレンジ</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>エムスリーキャリアは2009年の創業以来、医療の&quot;人・組織&quot;の課題を解決をするために、次々と事業を創出しています。売上140億円・営業利益45億円超と最高益を更新している状況です。</p><p>圧倒的シェアを持つ「医療人材」のイメージが強いかもしれませんが、「経営支援」「健康経営」「事業開発群」が大きな事業の柱として育っています。実際には毎年2つ以上の新規事業を創出し、現在は20を超えるサービスを展開しています。</p><p>「0→1」「1→10」「10→100」のすべての事業フェーズのプロダクトを持っており、Webサービスやアプリケーションの立ち上げ、商品・プロダクト戦略立案～戦術策定など、幅広い業務にチャレンジできるチャンスがあります。子供から大人まで誰もがかかわる社会インフラである「医療・ヘルスケア」の課題を解決する、唯一無二のサービスを一緒につくりませんか。</p><p><strong>配属先：</strong>事業開発グループ、マーケティンググループ</p><p><strong>採用背景</strong><br>事業の種やプロダクト開発のアイデアが沢山あるにも関わらず、具合的な企画立案・実行を担う人材が足りていないという組織の課題があります。これからも事業成長は続く見込みで、成長スピードをより加速するためにも、企画職として新規サービスの立ち上げや既存事業の成長を牽引してくださる人材が必要不可欠なことから、新規採用を積極的に行っています。</p><p><strong>ポジションの魅力</strong></p><ul><li>業界をリードする立場から、社会的なインパクトの大きい事業の成長に関われる<br>・m3.comは登録求職者が10年連続でNo.1、1万人を超える医師が利用<br>・社会課題に対して、既存事業のアセットを活用した事業開発にも積極的に取り組んでいます。</li><li>0→1から10→100など様々なフェーズの事業開発機会<br>・顧客基盤や他チームとの連携という強みを持ちながら事業立ち上げに取り組める<br>・PoC段階の0→1事業立ち上げ（薬剤師版プライム）<br>・大きくスケールするフェーズの事業成長（M3キャリアプライム）<br>- 累計2,000施設以上の導入・年間売上20億円以上の採用・経営支援SaaSプロダクト<br>- マーケットシェアもさらに白地があり、10倍以上のポテンシャル</li></ul><p><strong>職務内容</strong><br>新規事業開発におけるプロダクトマネジメント全般をお任せします。</p><ul><li>市場調査をもとにプロダクト戦略の方針を明確化</li><li>競合・選考プレイヤーの調査を踏まえて差別化できるポイントの整理</li><li>プロダクトロードマップの作成、各種要求・要件定義の作成</li><li>開発チームとコミュニケーションを取りながらスケジュール管理</li><li>顧客側のFBサイクルから、UIUXの改善推進</li></ul><p><strong>担当サービス例</strong></p><ul><li>病院・クリニック向けSaaS型採用支援プロダクト「M3 Career Prime」</li><li>薬局向け経営支援SaaS</li><li>医師アルバイトアプリ</li></ul><p><strong><span class='tag tag-must'>MUST</span></strong></p><ul><li>WebサービスのPM・PdMの実務経験<br>- 開発における要件定義〜開発チームのディレクションまでされてきた方</li></ul><p><strong><span class='tag tag-want'>WANT</span></strong></p><ul><li>SaaSサービスのご経験</li><li>プロダクトオーナーとして事業管掌されていた方</li><li>事業開発経験</li></ul><p><strong>求める人物像</strong></p><ul><li>成長意欲が高く、社会・顧客や自社に対して大きなインパクトを与えたいとお考えの方</li><li>当事者意識を持ち、主体的にPDCAを回していける方</li><li>部署や役割の垣根を超えて、コミュニケーションを取りながら業務を推進していける方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可（条件あり）</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.m3career.com/corporate-info/#about-4" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k8"><div class="card-inner">
+  <div class="badges"><span class="badge">プロダクトマネージャー</span><span class="badge badge-blue">IPO準備中</span></div>
+  <div class="co-name">GO株式会社（旧社名：株式会社Mobility Technologies）</div>
+  <div class="co-url"><a href="https://mo-t.com/" target="_blank">https://mo-t.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒106-0041 東京都港区麻布台一丁目３番１号 麻布台ヒルズ森JPタワー 23階</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備中</li><li>過去入社実績アリ</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「移動で人を幸せに。」移動の進化は、快適を、安全を、可能性を、効率を、自由を創造する。移動に関わるサービスの提供を通じて、機会を全ての人々に対して等しく提供すること。加えて、移動の時間そのものも「コスト」ではなく「機会」に変えていくこと。今現在の移動も、未来に移動も、喜びに感じる体験を提供し、「人を幸せにすること。」を私たちは目指しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「移動で人を幸せに。」<br>移動の進化は、快適を、安全を、可能性を、効率を、自由を創造する。移動に関わるサービスの提供を通じて、機会を全ての人々に対して等しく提供すること。加えて、移動の時間そのものも「コスト」ではなく「機会」に変えていくこと。今現在の移動も、未来に移動も、喜びに感じる体験を提供し、「人を幸せにすること。」を私たちは目指しています。</p><p><strong>➊タクシーアプリ『GO』</strong><br>約10万台のネットワークを有するGO株式会社が、2020年9月よりスタートしたNo.1*タクシーアプリです。タクシー車両とリアルタイムな位置情報連携と高度な配車ロジックで「早く乗れる」体験を提供しています。ユーザー向けアプリの他に、乗務員向け支援ソリューションも提供しています。</p><p><strong>➋タクシーのビジネス利用に特化した法人向け管理サービス 『GO BUSINESS』</strong><br>タクシー料金の請求書払いや社員のタクシー利用管理など、ビジネスシーンに特化した管理システムです。2021年11月サービス開始。</p><p><strong>➌交通事故削減を支援する次世代AIドラレコサービス『DRIVE CHART』</strong><br>ドライブレコーダーをベースとした専用車載器から得られる各種データから、交通事故に繋がる可能性の高い危険シーンを自動検知し、運転傾向を分析する、AIとIoTを掛け合わせた交通事故削減支援サービスです。</p><p>toC（ユーザー向け）事業から、toB（タクシー会社・乗務員向け）事業まで、移動にまつわる事業を幅広く展開しています。2020年を目前に控え、交通インフラの整備・MaaSの実現化が進む変革期である今、公共交通タクシーから「移動の未来」を作り出しています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 プロダクトマネージャー（オープン）</div>
+          <div class="job-preview">多種多様なプロダクト（タクシーアプリ、法人向け管理サービス、AIドラレコ等）のマネジメント</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>仕事概要</strong></p><p>GO株式会社では、市場の変化に一早く対応し、タクシー事業者とお客様にとってより良いプロダクトを提供するとともに、モビリティ領域を軸として「移動」のみならず「交通事故削減」「脱炭素化」「人材不足解消」「地域貢献」などをテーマとした多様な事業を展開するためのプロダクト開発を行っています。</p><p>その中でプロダクトマネージャとして、プロダクトの企画から設計、リリース、リリース後の効果測定やその後の改善など、プロダクト開発における全ての工程に携わっていただきます。</p><ul><li>タクシーアプリ『GO』</li><li>タクシーのビジネス利用に特化した法人向け管理サービス 『GO BUSINESS』</li><li>交通事故削減を支援する次世代AIドラレコサービス『DRIVE CHART』</li><li>脱炭素サービス『GX（グリーントランスフォーメーション）』</li><li>ドライバー求人サイト『GOジョブ』</li><li>その他新規プロダクト</li></ul><p><strong>業務詳細</strong><br>プロダクトマネージャーとして以下の役割を担います。</p><ul><li>ユーザーのペインを正しく理解し、事業の目標を達成するために最適な案件や機能における優先順位とスコープを定義することで、プロダクトを通じてユーザーの課題解決と事業の成功の両立を実現する。</li><li>プロダクトを市場に送り出すために、様々なステークホルダーに向き合い議論と合意形成を行い、コミュニケーションの中心となってプロダクト開発をリードする。</li><li>プロダクトがどの方向に向かって進むのか、理想のビジョンを描き、実現に向けたロードマップを作成する。</li><li>「なぜ作るのか(Why)」「何を作るか(What)」に責任を持つ。</li></ul><p><strong>募集背景</strong></p><ul><li>GO株式会社のプロダクトマネージャーは、webシステム・ネイティブアプリなどのソフトウェア、IoT機器などのハードウェア、ビッグデータやAIを活用したサービスなど多種多様なプロダクトをマネジメントしています。</li><li>弊社では多くのユーザーにお使いいただいているタクシーアプリ『GO』をはじめ、多数の既存プロダクトの継続的な成長を実現しながらも、毎年複数のB2C・B2Bの新規プロダクトをスピード感を持ってリリースしています。</li><li>今後も様々なプロダクト開発の計画がある環境下において、プロダクトマネージャーの体制をさらに強化したく、交通・社会課題の解決を目指して切磋琢磨できる仲間を募集しています。</li></ul><p><strong>本ポジションの魅力</strong></p><ul><li>「移動で人を幸せに。」のミッションのもと、タクシー産業の課題解決を起点に、テクノロジーとデータを活用して交通・社会課題の解決に直結する多種多様なプロダクトの開発に携わることができます。</li><li>テクノロジー・データ・デザイン・AI・ビジネス・マーケティングなど様々な分野における高い専門性をもったプロフェッショナルと協業し、人々の移動体験をアップデートして未来を創造するプロダクトの開発に携わることができます。</li></ul><p><strong>所属組織</strong></p><ul><li>人数：プロダクトマネージャーは20名以上在籍。B2C、B2B、決済、会計関連など様々なプロダクト開発に従事。</li><li>役割：プロダクトの企画から設計、リリース、リリース後の効果測定やその後の改善など、プロダクト開発における全ての工程に関与。</li><li>カルチャー：様々なバックグラウンドがあり異なる強みを持ったメンバーが在籍しており、強みを発揮し弱みはチームでカバーし合う文化。職歴や立場などは関係なく提案やアイデア、積極的な意見を出すことを歓迎する風土。弊社のバリューの一つである「コトに向かう。」を大切にしている環境。</li></ul><p><strong>働き方</strong><br>本ポジションはフルリモートワークOKです！（ただし国内のみ）出社日数の指定はありません。会社より指定があった場合は、出社していただく必要がございます。（入社日や退職日等）</p><p><strong><span class='tag tag-must'>MUST</span></strong></p><ul><li>プロダクトマネージャー 、エンジニア、デザイナー、リサーチャー、データーアナリスト、事業開発、マーケティングなどのポジションで、Webシステムやアプリなどのソフトウェアプロダクトまたはハードウェアプロダクトの開発に携わった経験（目安3年以上）</li><li>課題を発見し、その課題を解決するための仮説の立案と、プロダクト戦略や機能、施策への落とし込みを行う能力</li><li>ステークホルダーのあらゆる意見に真摯に耳を傾けながら、担当プロダクトのあるべき姿を考え尽くせる胆力とバランス感覚</li><li>プロダクト開発を推進していく高いコミュニケーション能力とリーダーシップ</li><li>困難に直面しても絶対に諦めず、「妥協案」ではなく「正しく前に進む方法」を考え、結果を出せるオーナーシップ</li></ul><p><strong><span class='tag tag-want'>WANT</span></strong></p><ul><li>定量・定性双方のデータから課題を把握して整理し、プロダクト戦略を立案できる能力</li><li>AIなど最新の技術に高い関心と深い知見があり、それらを活用したプロダクトの企画・設計ができる能力</li><li>決済、会計、アドネットワークに関連するプロダクト開発に携わった経験</li></ul><p><strong>求める人物像</strong></p><ul><li>プロダクトを通じた社会課題の解決に強い関心がある方</li><li>「広い視野」「長い視点」「実現したい姿」「柔軟性」を持って自ら行動ができる方</li><li>最新の技術領域に関心があり、それらを習得するための継続的なスキル向上に努められる方</li><li>相手を尊重したコミュニケーションが取れる方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可（条件あり）</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://mo-t.com/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k9"><div class="card-inner">
+  <div class="badges"><span class="badge">プロダクトマネージャー（PdM）シニア</span><span class="badge badge-blue">未上場（N-3）</span></div>
+  <div class="co-name">CPAエクセレントパートナーズ株式会社</div>
+  <div class="co-url"><a href="https://cpa-excellent-partners.co.jp/" target="_blank">https://cpa-excellent-partners.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都新宿区新宿3-14-20 新宿テアトルビル5F</td></tr><tr><th>設立</th><td>2001年</td></tr><tr><th>上場区分</th><td>未上場（N-3）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備フェーズ：N-3期</li><li>社長リレーション</li><li>過去複数名入社実績アリ</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「学習支援」「キャリア支援」「人材交流」の総合的なサポートにより、会計人材の可能性を広げていくことを目指し、公認会計士資格スクール『CPA会計学院』を全国に展開。公認会計士試験にて過半数の合格者を輩出する実績を出している急成長企業。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p><strong>CPAエクセレントパートナーズ株式会社</strong><br>「学習支援」「キャリア支援」「人材交流」の総合的なサポートにより、会計人材の可能性を広げていくことを目指し、公認会計士資格スクール『CPA会計学院』を全国に展開する他、無料で簿記・会計が学べるeラーニングプラットフォーム『CPAラーニング』、会計人材に特化した人材紹介サービス『CPASSキャリア』をはじめとした会計人材の生涯支援事業『CPASS』を運営しています。</p><p>主要事業の「公認会計士資格スクールCPA会計学院」は、公認会計士試験にて過半数の合格者を輩出する実績を出しています。2023年 公認会計士試験合格者1,544名のうち786名がCPA会計学院の受講生でした。また8年連続合格者数を更新しています。また2020年にサービスを開始した『CPAラーニング』は、主に会計・経理・ファイナンス人材が、実務で必要とする知識・スキルを完全無料で受講できるeラーニングプラットフォームです。現在 約1,000本の講義動画を無料で公開しており、受講者は50万人を超えています。</p><p>設立は2001年。代表の国見社長が、大学を卒業してすぐのタイミングで「日本一良い教育機関をつくりたい」という想いを胸にCPAエクセレントパートナーズ株式会社を創業。立ち上げ当時は23歳、起業して数年の間は常勤職員は国見社長お1人で、講義はもちろん個別相談も受付業務もビラ作りも、必要な業務はすべてこなされていました。設立から20年以上事業継続され、今では公認会計士試験の合格者占有率50%以上を誇る資格スクールを全国展開、公開したeラーニングの会員数は50万人超です。これまで一切の資金調達を行わず、自己資本のみでここまで会社を成長させてきました。</p><p>2026年3月には新CFOに坂本壽男氏が就任、同じく3月にはWARC AGENT事業とSYNCA事業を承継、2月には元プロサッカー選手の播戸竜二氏、五輪金メダリストの岩崎恭子氏とのアドバイザー契約を締結するなど、事業拡大と人材強化が加速しています。また、B.LEAGUEやJリーグとのパートナーシップ、紺綬褒章受章など、社会的な影響力も拡大中です。</p><p>同社のミッション「人の可能性を広げ人生を豊かにする応援をする」は、単なる試験合格支援を超えた生涯支援への本気度を表しています。80万人を超える会員を持つCPAラーニングの完全無料提供、会計人材特化型の転職支援、人材交流プラットフォームCPASSなど、「点ではなく線」でのサポート体制が他社との圧倒的な差別化要因です。</p><p><strong>運営事業</strong></p><ul><li>公認会計士資格スクール「CPA会計学院」の運営</li><li>簿記や会計ファイナンスを完全無料で学べるeラーニング「CPAラーニング」の運営</li><li>会計ファイナンス人材特化型 求人サイト 「CPAジョブズ」の運営</li><li>会計ファイナンス人材特化型 転職エージェント「CPASSキャリア」の運営</li><li>会計ファイナンス人材の生涯支援プラットフォーム「CPASS」の運営</li></ul><p><strong>代表取締役　国見 健介氏</strong><br>1978年生まれ。慶應義塾大学経済学部の在学中（3年生）に、公認会計士試験に合格。「教育は、人の人生の可能性を広げる」やりがいのある仕事だなと考えるようになり、大学卒業後、CPAエクセレントパートナーズ株式会社を創業。ミッションやビジョンに共感をしてくれる人、大切にしたいバリューや行動指針に心から共感してくれる人の採用を大事にされています。</p><p>公認会計士試験の合格占有率は驚異の60％、そして売上成長率は過去5年間で850%と非常に好調です。数年後のIPOを目指し、ベンチャーマインドを持つ成長企業として新規事業やM&Aなども積極的におこなっていく方針と伺っております。今後は売上数百億円、海外展開も見据えており、優秀な仲間を増やしたいと積極採用されています。</p><p>「事業にコミットしながら仲間を大切に、長期就業してほしい」という社長の想いもあり、離職率は大変低いです。平均年齢32歳、平均年収1,000万円と、成果をしっかり評価し社員に報酬で還元されています。直近は副社長はじめ幹部クラス複数名が、morich経由でジョインしていただいています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 プロダクトマネージャー（PdM）シニア／技術開発本部</div>
+          <div class="job-preview">全社の中長期戦略に直結するプロダクト（ID統合・ユーザー情報基盤など）の企画・推進を担うプロダクトマネージャー</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>募集背景</strong><br>当社はこの5年間で社員数が5倍、売上は8倍と急成長を遂げており、今後も海外展開・IPO準備・M&A戦略など、次なるステージへの挑戦をスピード感を持って推進していきます。このような環境下で、成長を支える技術開発本部において、全社の中長期戦略に直結するプロダクト（ID統合・ユーザー情報基盤など）の企画・推進を担うプロダクトマネージャーを新たに募集します。</p><p>全体最適を意識しつつ、あるべき姿を描き、開発チームと共にそれを実現へ導くことが求められます。さらに、開発チームにおけるプロダクトマネジメントケイパビリティの底上げにも貢献いただける方を歓迎します。</p><p><strong>仕事内容</strong><br>当社が次の成長フェーズへ進むためには、ITの力を最大限に活かし、戦略的な打ち手を着実かつスピーディーに実行していく必要があります。</p><p>本ポジションでは、以下の業務をお任せします：</p><ul><li>プロダクトの中長期的なあるべき姿を、事業部門と連携しながら構想・言語化</li><li>プロダクト戦略の立案およびロードマップの策定</li><li>関係各所との調整・推進を通じたプロダクトマネジメント業務全般</li><li>プロジェクトの進行管理・課題抽出・改善サイクルの実行</li></ul><p><strong>ポジションの魅力</strong></p><ul><li>急成長する企業の中で、全社の戦略に深く関わる中核システムの企画・開発に携われます</li><li>技術開発組織は今後さらに拡大予定。ポジションや挑戦のチャンスは無限にあります</li><li>組織設計・チームビルディングなど、マネジメント領域への挑戦も可能です</li></ul><p><strong>チームについて</strong><br>現在8名体制で運営しており、今後5名程度の新規採用を予定しています。成長意欲の高いメンバーが集まる環境で、互いに刺激し合いながらプロダクトを進化させています。</p><p><strong>必須スキル</strong></p><ul><li><span class='tag tag-must'>MUST</span> IT/ソフトウェア開発プロジェクトのマネジメント経験5年以上</li><li><span class='tag tag-must'>MUST</span> Web/モバイルサービスのプロダクト開発経験3年以上</li><li><span class='tag tag-must'>MUST</span> 外注管理の経験 2年以上</li><li><span class='tag tag-must'>MUST</span> 要件定義からリリースまでの一連のプロセス経験</li><li><span class='tag tag-must'>MUST</span> プロジェクト管理ツール（Jira等）の活用経験</li><li><span class='tag tag-must'>MUST</span> データ分析に基づく意思決定の経験</li></ul><p><strong>歓迎スキル</strong></p><ul><li><span class='tag tag-want'>WANT</span> 開発経験（設計・実装）2年以上</li><li><span class='tag tag-want'>WANT</span> PMP、ITIL、アジャイル関連の資格</li><li><span class='tag tag-want'>WANT</span> UX/UIデザインの知識・経験</li><li><span class='tag tag-want'>WANT</span> 品質保証・テスト計画の知識・経験</li><li><span class='tag tag-want'>WANT</span> BtoB/BtoCサービスの両方での開発経験</li><li><span class='tag tag-want'>WANT</span> 複数の開発手法（ウォーターフォール、アジャイル、ハイブリッド）の実践経験</li></ul><p><strong>求める人物像</strong></p><ul><li>「社内SE」的な受け身ではなく、事業とシステムの橋渡し役として主体的に動いていきたい方</li><li>変化を恐れず、新しい役割や領域にも積極的にチャレンジしたい方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://cpa-excellent-partners.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://cpa-net.jp/" target="_blank">🎓 CPA会計学院</a><a class="lbtn lbtn-out" href="https://www.cpa-learning.com/" target="_blank">📚 CPAラーニング</a><a class="lbtn lbtn-out" href="https://cpa-jobs.jp" target="_blank">💼 CPAジョブズ</a><a class="lbtn lbtn-out" href="https://cpa-career.jp/" target="_blank">🔄 CPASSキャリア</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが早苗朋宏 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
